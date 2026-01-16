@@ -1,0 +1,100 @@
+{
+    "Jobs": [
+        {
+            "id": 1,
+            "title": "ফ্রন্টএন্ড ডেভেলপার",
+            "company": "Tech Solutions Ltd",
+            "location": "ঢাকা",
+            "deadline": "২০ জানুয়ারি ২০২৬",
+            "type": "ফুল টাইম"
+        },
+        {
+            "id": 2,
+            "title": "গ্রাফিক ডিজাইনার",
+            "company": "Creative Agency",
+            "location": "চট্টগ্রাম",
+            "deadline": "২৫ জানুয়ারি ২০২৬",
+            "type": "পার্ট টাইম"
+        },
+        {
+            "id": 3,
+            "title": "ডিজিটাল মার্কেটিং এক্সিকিউটিভ",
+            "company": "Online Media BD",
+            "location": "রিমোট",
+            "deadline": "৩০ জানুয়ারি ২০২৬",
+            "type": "ফুল টাইম"
+        },
+        {
+            "id": 4,
+            "title": "কনটেন্ট রাইটার",
+            "company": "Daily News Network",
+            "location": "ঢাকা",
+            "deadline": "২ ফেব্রুয়ারি ২০২৬",
+            "type": "ফ্রিল্যান্স"
+        },
+        {
+            "id": 5,
+            "title": "ভিডিও এডিটর",
+            "company": "Media House BD",
+            "location": "ঢাকা",
+            "deadline": "৫ ফেব্রুয়ারি ২০২৬",
+            "type": "ফুল টাইম"
+        },
+        {
+            "id": 6,
+            "title": "সোশ্যাল মিডিয়া ম্যানেজার",
+            "company": "Brand Boosters",
+            "location": "সিলেট",
+            "deadline": "৮ ফেব্রুয়ারি ২০২৬",
+            "type": "পার্ট টাইম"
+        },
+        {
+            "id": 7,
+            "title": "ব্যাকএন্ড ডেভেলপার (Node.js)",
+            "company": "Cloud Tech BD",
+            "location": "ঢাকা",
+            "deadline": "১০ ফেব্রুয়ারি ২০২৬",
+            "type": "ফুল টাইম"
+        },
+        {
+            "id": 8,
+            "title": "UI/UX ডিজাইনার",
+            "company": "Design Studio Pro",
+            "location": "রিমোট",
+            "deadline": "১২ ফেব্রুয়ারি ২০২৬",
+            "type": "ফুল টাইম"
+        },
+        {
+            "id": 9,
+            "title": "ডাটা এন্ট্রি অপারেটর",
+            "company": "InfoTech Services",
+            "location": "রাজশাহী",
+            "deadline": "১৫ ফেব্রুয়ারি ২০২৬",
+            "type": "পার্ট টাইম"
+        },
+        {
+            "id": 10,
+            "title": "আইটি সাপোর্ট এক্সিকিউটিভ",
+            "company": "Smart Solutions",
+            "location": "খুলনা",
+            "deadline": "১৮ ফেব্রুয়ারি ২০২৬",
+            "type": "ফুল টাইম"
+        },
+        {
+            "id": 11,
+            "title": "জুনিয়র রিপোর্টার",
+            "company": "Bangla News 24",
+            "location": "ঢাকা",
+            "deadline": "২০ ফেব্রুয়ারি ২০২৬",
+            "type": "ফুল টাইম"
+        },
+        {
+            "id": 12,
+            "title": "এসইও স্পেশালিস্ট",
+            "company": "Digital Growth Agency",
+            "location": "রিমোট",
+            "deadline": "২৫ ফেব্রুয়ারি ২০২৬",
+            "type": "ফুল টাইম"
+        }
+    ]
+}

@@ -1,0 +1,64 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "slug": "latest",
+      "name": "সর্বশেষ"
+    },
+    {
+      "id": 2,
+      "slug": "bangladesh",
+      "name": "বাংলাদেশ"
+    },
+    {
+      "id": 3,
+      "slug": "politics",
+      "name": "রাজনীতি"
+    },
+    {
+      "id": 4,
+      "slug": "world",
+      "name": "বিশ্ব"
+    },
+    {
+      "id": 5,
+      "slug": "business",
+      "name": "বাণিজ্য"
+    },
+    {
+      "id": 12,
+      "slug": "top-news",
+      "name": "শীর্ষ খবর"
+    },
+    {
+      "id": 6,
+      "slug": "opinion",
+      "name": "মতামত"
+    },
+    {
+      "id": 7,
+      "slug": "sports",
+      "name": "খেলা"
+    },
+    {
+      "id": 8,
+      "slug": "entertainment",
+      "name": "বিনোদন"
+    },
+    {
+      "id": 9,
+      "slug": "jobs",
+      "name": "চাকরি"
+    },
+    {
+      "id": 10,
+      "slug": "lifestyle",
+      "name": "জীবনযাপন"
+    },
+    {
+      "id": 11,
+      "slug": "video",
+      "name": "ভিডিও"
+    }
+  ]
+}
