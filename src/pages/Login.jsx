@@ -19,7 +19,7 @@ function Login() {
             setLoading(true);
 
             const res = await axios.post(
-                "https://news-website-server-three.vercel.app/api/auth/login",
+                "http://localhost:5000/api/auth/login",
                 { email, password }
             );
 
@@ -48,7 +48,7 @@ function Login() {
             <form
                 onSubmit={handleLogin}
                 className="bg-gray-100 p-8 rounded-md shadow w-96 border border-gray-300">
-                    <img src="./images/news.png" alt="News-Logo" className="w-20 m-auto" />
+                <img src="./images/news.png" alt="News-Logo" className="w-20 m-auto" />
                 <h2 className="text-2xl font-bold mb-6 text-center -mt-2 text-gray-700">
                     Login Form
                 </h2>
@@ -58,21 +58,18 @@ function Login() {
                     placeholder="Email"
                     className="w-full border border-gray-400 p-2 mb-4 rounded focus:bg-gray-200"
                     value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                />
+                    onChange={(e) => setEmail(e.target.value)} />
 
                 <input
                     type="password"
                     placeholder="Password"
                     className="w-full border border-gray-400 p-2 mb-4 rounded focus:bg-gray-200"
                     value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
+                    onChange={(e) => setPassword(e.target.value)} />
 
                 <button
                     disabled={loading}
-                    className="w-full bg-blue-500 hover:bg-blue-600 hover:scale-95 duration-300 text-white py-2 rounded cursor-pointer"
-                >
+                    className="w-full bg-blue-500 hover:bg-blue-600 hover:scale-95 duration-300 text-white py-2 rounded cursor-pointer">
                     {loading ? "Logging in..." : "Login"}
                 </button>
 
@@ -80,8 +77,7 @@ function Login() {
                     Don’t have an account?{" "}
                     <NavLink
                         to="/register"
-                        className="text-blue-500 hover:font-semibold"
-                    >
+                        className="text-blue-500 hover:font-semibold">
                         Register
                     </NavLink>
                 </p>

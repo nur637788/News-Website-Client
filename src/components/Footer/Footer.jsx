@@ -5,20 +5,40 @@ import { MdBrandingWatermark, MdContactPage, MdCookie, MdDesignServices, MdEmail
 import { FcAdvertising } from "react-icons/fc";
 import { SiCoinmarketcap } from "react-icons/si";
 import { Link, NavLink } from 'react-router';
+import axios from "axios";
 
 function Footer() {
     const [email, setEmail] = useState("");
     const [success, setSuccess] = useState(false);
+    const [loading, setLoading] = useState(false);
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    const handleSubscribe = async () => {
+        if (!email) {
+            alert("Please enter your email");
+            return;
+        }
 
-        if (!email) return;
-        setSuccess(true);
-        setEmail("");
-
-        setTimeout(() => setSuccess(false), 3000);
+        try {
+            setLoading(true);
+            await axios.post(
+                "http://localhost:5000/api/newsletter/subscribe",
+                { email }
+            );
+            setSuccess(true);
+            setEmail("");
+            setTimeout(() => setSuccess(false), 5000);
+        } catch (err) {
+            if (err.response?.status === 409) {
+                alert("Already subscribed");
+            } else {
+                alert("Something went wrong");
+            }
+        } finally {
+            setLoading(false);
+        }
     };
+
+
     return (
         <div className='mt-5  bg-gray-100'>
             <footer className="footer sm:footer-horizontal  bg-gray-100 text-gray-900 p-10 max-w-6xl mx-auto">
@@ -56,29 +76,35 @@ function Footer() {
                     <a className="link link-hover flex justify-center items-center gap-2 hover:text-blue-800" href="tel:+01749535688"><MdWhatsapp size={16} />+8801749535688</a>
                 </nav>
                 {/* Newsletter Section */}
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={(e) => {
+                    e.preventDefault();
+                    handleSubscribe();
+                }}>
                     <h6 className="footer-title font-bold text-black">
                         Newsletter
                     </h6>
+
                     <fieldset className="w-80">
-                        <label>Enter your email address</label>
-                        <div className="join mt-1">
+                        <label className="text-sm font-medium text-gray-700">
+                            Enter your email address
+                        </label>
+
+                        <div className="join mt-1 w-full">
                             <input
                                 type="email"
-                                placeholder="username@site.com"
-                                className="input input-bordered join-item bg-gray-300"
+                                placeholder="username@email.com"
+                                className="input input-bordered join-item bg-gray-200 w-full"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
-                                required
-                            />
+                                required />
+
                             <button
                                 type="submit"
-                                className="btn btn-primary join-item"
-                            >
-                                Subscribe
+                                disabled={loading}
+                                className="btn btn-primary join-item disabled:opacity-80">
+                                {loading ? "Subscribing..." : "Subscribe"}
                             </button>
                         </div>
-
                         {/* Success Message */}
                         {success && (
                             <p className="text-green-600 mt-2 text-sm">
@@ -112,7 +138,7 @@ function Footer() {
             </footer>
 
 
-        </div>
+        </div >
     )
 }
 

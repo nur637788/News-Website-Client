@@ -1,11 +1,12 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 function Contact() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [message, setMessage] = useState("");
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         if (!name || !email || !message) {
@@ -13,14 +14,22 @@ function Contact() {
             return;
         }
 
-        // এখানে তুমি API call করতে পারো যদি backend থাকে
-        console.log({ name, email, message });
-        alert("তোমার মেসেজটি পাঠানো হয়েছে। ধন্যবাদ!");
+        try {
+            await axios.post(
+                "http://localhost:5000/api/contact/send",
+                { name, email, message }
+            );
 
-        // Clear form
-        setName("");
-        setEmail("");
-        setMessage("");
+            alert("✅ তোমার মেসেজটি পাঠানো হয়েছে। ধন্যবাদ!");
+            // Clear form
+            setName("");
+            setEmail("");
+            setMessage("");
+
+        } catch (error) {
+            alert("❌ মেসেজ পাঠানো যায়নি, আবার চেষ্টা করুন");
+            console.log(error);
+        }
     };
 
     return (
@@ -83,7 +92,7 @@ function Contact() {
                 <div className="mt-10 text-center text-gray-600 space-y-2">
                     <p><b>ইমেইল:</b> <a href="mailto:worldnews@support.com" target="_blank" className="text-blue-500">worldnews@support.com</a></p>
                     <p><b>ফোন:</b> <a href="tel:+01749535688" target="_blank" className="text-blue-500">+8801749535688</a></p>
-                    <p><b>ঠিকানা:</b> 111 বিজয় সরণি, ঢাকা, DH 1515, বাংলাদেশ।</p>
+                    <p><b>ঠিকানা:</b> 111 বিজয় সরণি, <br /> ঢাকা, DH 1515, বাংলাদেশ।</p>
                 </div>
             </div>
         </div>

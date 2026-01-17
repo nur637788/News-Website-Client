@@ -65,12 +65,12 @@ function Design() {
                         </div>
                     </div>
                     <span className="flex gap-4 items-center mt-3">
-                        <a href="" target="_blank"><FaFacebook className="hover:scale-110 hover:text-blue-500 duration-300" /></a>
-                        <a href="" target="_blank"><FaInstagram className="hover:scale-110 hover:text-blue-500 duration-300" /></a>
-                        <a href="" target="_blank"><FaLinkedin className="hover:scale-110 hover:text-blue-500 duration-300" /></a>
-                        <a href="" target="_blank"><FaGithub className="hover:scale-110 hover:text-blue-500 duration-300" /></a>
-                        <a href="" target="_blank"><FaEnvelope className="hover:scale-110 hover:text-blue-500 duration-300" /></a>
-                        <a href="" target="_blank"><FaWhatsapp className="hover:scale-110 hover:text-blue-500 duration-300" /></a>
+                        <a href="http://facebook.com/nur637788" target="_blank"><FaFacebook className="hover:scale-110 hover:text-blue-500 duration-300" /></a>
+                        <a href="http://instagram.com/nur637788" target="_blank"><FaInstagram className="hover:scale-110 hover:text-blue-500 duration-300" /></a>
+                        <a href="http://linkedin.com/in/nur637788" target="_blank"><FaLinkedin className="hover:scale-110 hover:text-blue-500 duration-300" /></a>
+                        <a href="http://github.com/nur637788" target="_blank"><FaGithub className="hover:scale-110 hover:text-blue-500 duration-300" /></a>
+                        <a href="mailto:mdnoyon631234@gmail.com" target="_blank"><FaEnvelope className="hover:scale-110 hover:text-blue-500 duration-300" /></a>
+                        <a href="https://wa.me/8801749535688?text=Hi%2C%20I%20want%20to%20chat%20with%20you" target="_blank"><FaWhatsapp className="hover:scale-110 hover:text-blue-500 duration-300" /></a>
                     </span>
                 </div>
             </div>

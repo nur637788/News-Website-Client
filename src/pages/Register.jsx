@@ -20,7 +20,7 @@ function Register() {
             setLoading(true);
 
             const res = await axios.post(
-                "https://news-website-server-three.vercel.app/api/auth/register",
+                "http://localhost:5000/api/auth/register",
                 { name, email, password }
             );
 
@@ -59,29 +59,25 @@ function Register() {
                     placeholder="Full Name"
                     className="w-full border border-gray-400 p-2 mb-4 rounded focus:bg-gray-200"
                     value={name}
-                    onChange={(e) => setName(e.target.value)}
-                />
+                    onChange={(e) => setName(e.target.value)}/>
 
                 <input
                     type="email"
                     placeholder="Email"
                     className="w-full border border-gray-400 p-2 mb-4 rounded focus:bg-gray-200"
                     value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                />
+                    onChange={(e) => setEmail(e.target.value)}/>
 
                 <input
                     type="password"
                     placeholder="Password"
                     className="w-full border border-gray-400 p-2 mb-4 rounded focus:bg-gray-200"
                     value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
+                    onChange={(e) => setPassword(e.target.value)}/>
 
                 <button
                     disabled={loading}
-                    className="w-full bg-green-500 hover:bg-green-600 hover:scale-95 duration-300 text-white py-2 rounded cursor-pointer"
-                >
+                    className="w-full bg-green-500 hover:bg-green-600 hover:scale-95 duration-300 text-white py-2 rounded cursor-pointer">
                     {loading ? "Registering..." : "Register"}
                 </button>
 
@@ -89,8 +85,7 @@ function Register() {
                     Already have an account?{" "}
                     <NavLink
                         to="/login"
-                        className="text-blue-500 hover:font-semibold"
-                    >
+                        className="text-blue-500 hover:font-semibold">
                         Login
                     </NavLink>
                 </p>

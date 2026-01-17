@@ -37,11 +37,8 @@ function CategoryPage() {
                   {item.shortDescription}
                 </p>
               </div>
-              
             </div>
-
           </Link>
-
         ))}
       </div>
 
