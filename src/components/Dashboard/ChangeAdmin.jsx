@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
+import Logout from "./Logout";
 
 function ChangeAdmin() {
     const navigate = useNavigate()
@@ -49,12 +50,6 @@ function ChangeAdmin() {
     return (
         <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 rounded-md">
             <div className="bg-gray-200 max-w-md m-auto px-4 pb-6 pt-2 rounded-md shadow-sm border border-gray-300">
-
-                {/* Back Button */}
-                {/* <button
-                    onClick={() => navigate(-1)}
-                    className="flex items-center gap-1 text-sm font-medium my-2 text-blue-600 hover:text-blue-800">
-                    <IoArrowBack size={18} /> Back </button> */}
                 <img src="http://localhost:5173/images/news.png" alt="News-Logo" className="w-20 m-auto" />
                 <h2 className="text-xl md:text-2xl text-gray-700 font-bold mb-4 -mt-2 text-center">
                     Change Admin Info </h2>
@@ -111,6 +106,9 @@ function ChangeAdmin() {
                     className="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded cursor-pointer">
                     Update
                 </button>
+            </div>
+            <div className="-mt-8 mb-5">
+                <Logout />
             </div>
         </div>
     );

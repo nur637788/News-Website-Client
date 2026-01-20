@@ -28,6 +28,7 @@ import Branding from "./components/Footer/Branding";
 import Design from "./components/Footer/Design";
 import Marketing from "./components/Footer/Marketing";
 import Advertisement from "./components/Footer/Advertisement";
+import PendingNews from "./components/Dashboard/PendingNews";
 // footer page
 
 
@@ -46,8 +47,7 @@ const router = createBrowserRouter([
             { path: "privacy", element: <PrivacyPolocy /> },
             { path: "login", element: <Login /> },
             { path: "register", element: <Register /> },
-            { path: "adminLogin", element: <AdminLogin /> },
-
+            // Footer pages
             { path: "termsOfUse", element: <TermsOfUse /> },
             { path: "cookiePolicy", element: <CookiePolicy /> },
             { path: "pressKit", element: <PressKit /> },
@@ -73,8 +73,11 @@ const router = createBrowserRouter([
             { path: "calendar", element: <Calender /> },
             { path: "documents", element: <Documents /> },
             { path: "reports", element: <Reports /> },
-            { path: "profile", element: <ChangeAdmin /> },
+            { path: "pendingNews", element: <PendingNews /> },
             { path: "AddNews", element: <UplodeNews /> },
+            { path: "changeAdmin", element: <ChangeAdmin /> },
+
+            { path: "profile", element: <AdminLogin /> },
 
         ],
     },

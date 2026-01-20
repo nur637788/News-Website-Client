@@ -8,10 +8,12 @@ function Home() {
     const scrollRef = useRef(null);
 
     useEffect(() => {
-        axios
-            .get("/news.json")
+        axios.get("http://localhost:5000/api/news")
             .then((res) => {
-                setNews(res.data.slice(22, 37));
+                const videoNews = res.data.filter(
+                    (item) => item.category === "video"
+                );
+                setNews(videoNews);
             })
             .catch((err) => console.log(err));
     }, []);
@@ -65,12 +67,12 @@ function Home() {
                             <img
                                 src={item.image}
                                 alt={item.title}
-                                className="h-56 w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                                className="h-56 w-44 object-cover transition-transform duration-300 group-hover:scale-105"
                             />
 
                             {/* Overlay */}
                             <div className="absolute inset-0 bg-black/60 flex items-end p-3 transition-all duration-300 group-hover:bg-black/30">
-                                <p className="text-white text-sm">
+                                <p className="text-white text-[11px]">
                                     {item.title}
                                 </p>
                             </div>

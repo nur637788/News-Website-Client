@@ -63,42 +63,45 @@ function Documents() {
     };
 
     return (
-        <div className="p-5 bg-white text-slate-200 rounded-md">
-            <h1 className="text-xl md:text-2xl font-bold mb-4 text-gray-700">
+        <div className="p-1 bg-white text-slate-200 rounded-md">
+            <h1 className="text-xl md:text-2xl font-semibold mb-4 text-gray-700">
                 ডকুমেন্টস ম্যানেজমেন্ট
             </h1>
 
             {/* Upload Section */}
-            <div className="bg-green-900 p-4 rounded-lg mb-6">
-                <h2 className="text-lg font-semibold mb-3">
+            <div className="bg-green-900 p-2 rounded-xl mb-6">
+                <h2 className="text-lg font-semibold mb-4 text-white">
                     {editId ? "ডকুমেন্ট এডিট করুন" : "নতুন ডকুমেন্ট আপলোড"}
                 </h2>
 
-                <div className="flex flex-col md:flex-row gap-3">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    {/* Title */}
                     <input
                         type="text"
                         placeholder="ডকুমেন্টের নাম"
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
-                        className="flex-1 p-2 rounded bg-slate-900 border border-slate-700"
+                        className="w-full p-2 rounded-lg bg-slate-900 border border-slate-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
 
+                    {/* File (only upload mode) */}
                     {!editId && (
                         <input
                             type="file"
                             onChange={(e) => setFile(e.target.files[0])}
-                            className="flex-1 p-2 rounded bg-slate-900 border border-slate-700"
+                            className="w-full p-2 rounded-lg bg-slate-900 border border-slate-700 text-gray-300 file:bg-blue-300 file:text-white file:border-0 file:px-4 file:py-2 file:rounded-md file:cursor-pointer"
                         />
                     )}
 
+                    {/* Button */}
                     <button
                         onClick={handleUpload}
-                        className="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded"
-                    >
+                        className="w-full bg-blue-600 hover:bg-blue-700 transition px-4 py-2 rounded-lg font-semibold text-white cursor-pointer">
                         {editId ? "Update" : "Upload"}
                     </button>
                 </div>
             </div>
+
 
             {/* Documents Table */}
             <div className="bg-blue-900 rounded-lg p-4">
@@ -107,7 +110,7 @@ function Documents() {
                 </h2>
 
                 <table className="w-full text-sm">
-                    <thead className="text-slate-400 border-b border-slate-600">
+                    <thead className="text-slate-400 border-b  border-slate-600">
                         <tr>
                             <th className="py-2 text-left">নাম</th>
                             <th>টাইপ</th>

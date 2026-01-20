@@ -60,7 +60,7 @@ function Navbar() {
                         Login
                     </NavLink>
                     <NavLink
-                        to='/adminLogin'
+                        to='/adminDashboard'
                         className={({ isActive }) =>
                             isActive ? "font-bold text-blue-500" : "text-gray-700 hover:text-blue-500"}>
                         <MdDashboardCustomize size={22} />

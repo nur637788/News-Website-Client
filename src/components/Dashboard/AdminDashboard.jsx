@@ -1,122 +1,111 @@
-import StatBox from "./StatBox";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { Line, Doughnut } from "react-chartjs-2";
+
+// ✅ ChartJS Register
 import {
-    LineChart,
-    Line,
-    PieChart,
-    Pie,
-    Cell,
+    Chart as ChartJS,
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    ArcElement,
     Tooltip,
-    ResponsiveContainer
-} from "recharts";
+    Legend,
+} from "chart.js";
 
-function AdminDashboard() {
+ChartJS.register(
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    ArcElement,
+    Tooltip,
+    Legend
+);
 
-    // 📊 Line Chart Data (News Growth)
-    const newsData = [
-        { month: "Jan", news: 20 },
-        { month: "Feb", news: 35 },
-        { month: "Mar", news: 55 },
-        { month: "Apr", news: 80 },
-        { month: "May", news: 120 },
-    ];
+function AdminDashboard( ) {
+    const [stats, setStats] = useState(null);
 
-    // 🥧 Pie Chart Data (News Status)
-    const statusData = [
-        { name: "Published", value: 95 },
-        { name: "Pending", value: 25 },
-    ];
+    useEffect(() => {
+        axios
+            .get("http://localhost:5000/api/dashboard/stats")
+            .then((res) => setStats(res.data));
+    }, []);
 
-    const COLORS = ["#22c55e", "#f97316"];
+    if (!stats) return <p className="text-red-500 flex items-center justify-center min-h-screen text-xl">Loading...</p>;
+
+    const lineData = {
+        labels: stats.monthlyGrowth.map((m) => `Month ${m._id}`),
+        datasets: [
+            {
+                label: "News Growth",
+                data: stats.monthlyGrowth.map((m) => m.total),
+                borderWidth: 2,
+            },
+        ],
+    };
+
+    const doughnutData = {
+        labels: ["Published", "Pending"],
+        datasets: [
+            {
+                data: [stats.publishedNews, stats.pendingNews],
+            },
+        ],
+    };
 
     return (
-        <div className="min-h-screen bg-gray-200 rounded-md p-2">
 
-            <h1 className="text-xl md:text-3xl font-bold mb-8 text-pink-950">
-                Admin Dashboard
+        <div>
+            <h1 className="text-xl md:text-2xl font-bold mb-4 text-gray-400">
+                Dashboard
             </h1>
-
-            {/* Stats */}
-            <div className="grid md:grid-cols-3 gap-6 mb-10">
-                <StatBox title="Total News" value="120" />
-                <StatBox title="Published News" value="95" />
-                <StatBox title="Pending News" value="25" />
-                <StatBox title="Categories" value="12" />
-                <StatBox title="Users" value="350" />
-                <StatBox title="Admins" value="2" />
-            </div>
-
-            {/* Charts Section */}
-            <div className="grid md:grid-cols-2 gap-6 mb-10">
-
-                {/* Line Chart */}
-                <div className="bg-white p-5 rounded-lg shadow">
-                    <h2 className="font-semibold mb-4">
-                        Monthly News Growth
-                    </h2>
-
-                    <ResponsiveContainer width="100%" height={250}>
-                        <LineChart data={newsData}>
-                            <Tooltip />
-                            <Line
-                                type="monotone"
-                                dataKey="news"
-                                stroke="#2563eb"
-                                strokeWidth={3}
-                            />
-                        </LineChart>
-                    </ResponsiveContainer>
+            <div className="space-y-6">
+                {/* Cards */}
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    <Card title="Total News" value={stats.totalNews} />
+                    <Card title="Published News" value={stats.publishedNews} />
+                    <Card title="Pending News" value={stats.pendingNews} />
+                    <Card title="Categories" value={stats.categories} />
+                    <Card title="Users" value={stats.users} />
+                    <Card title="Admins" value={stats.admins} />
                 </div>
 
-                {/* Pie Chart */}
-                <div className="bg-white p-5 rounded-lg shadow">
-                    <h2 className="font-semibold mb-4">
-                        News Status
-                    </h2>
+                {/* Charts */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div className="bg-gray-200 p-4 rounded-lg">
+                        <h3 className="font-semibold mb-2">Monthly News Growth</h3>
+                        <Line
+                            key={`line-${stats.totalNews}`}
+                            data={lineData}
+                        />
+                    </div>
 
-                    <ResponsiveContainer width="100%" height={250}>
-                        <PieChart>
-                            <Pie
-                                data={statusData}
-                                dataKey="value"
-                                nameKey="name"
-                                innerRadius={50}
-                                outerRadius={90}
-                            >
-                                {statusData.map((_, index) => (
-                                    <Cell
-                                        key={index}
-                                        fill={COLORS[index]}
-                                    />
-                                ))}
-                            </Pie>
-                            <Tooltip />
-                        </PieChart>
-                    </ResponsiveContainer>
-
-                    <div className="flex justify-center gap-4 mt-3 text-sm">
-                        <span className="flex items-center gap-1">
-                            <span className="w-3 h-3 bg-green-500 inline-block"></span>
-                            Published
-                        </span>
-                        <span className="flex items-center gap-1">
-                            <span className="w-3 h-3 bg-orange-500 inline-block"></span>
-                            Pending
-                        </span>
+                    <div className="bg-gray-200 p-4 rounded-lg">
+                        <h3 className="font-semibold mb-2">News Status</h3>
+                        <Doughnut
+                            key={`doughnut-${stats.pendingNews}`}
+                            data={doughnutData}
+                        />
                     </div>
                 </div>
-            </div>
 
-            {/* Admin Info */}
-            <div className="bg-white p-6 rounded-lg shadow">
-                <h2 className="font-semibold text-lg mb-3">
-                    Admin Activity
-                </h2>
-                <p className="text-gray-600">
-                    You have <b>5 pending news</b> waiting for approval.
-                </p>
+                {/* Admin Activity */}
+                <div className="bg-white p-4 rounded-lg">
+                    You have <b>{stats.pendingNews}</b> pending news waiting for approval.
+                </div>
+
             </div>
         </div>
     );
 }
+
+const Card = ({ title, value }) => (
+    <div className="bg-white p-4 rounded-lg text-center shadow">
+        <p className="text-green-500 text-sm">{title}</p>
+        <h2 className="text-2xl font-bold text-blue-600">{value}</h2>
+    </div>
+);
 
 export default AdminDashboard;

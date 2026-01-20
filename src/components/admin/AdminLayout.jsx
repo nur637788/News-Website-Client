@@ -1,48 +1,50 @@
 import { NavLink, Outlet } from "react-router";
 import Profile from "../Dashboard/Profile";
-import Logout from "../Dashboard/Logout";
+import Header from "../Header";
+import Navbar from "../Navbar";
+import Footer from "../Footer/Footer";
 
 
 function AdminLayout() {
 
 
     return (
-        <div className="max-w-6xl min-h-screen flex bg-slate-950 text-slate-200 mx-auto my-5 rounded">
+        <div className="bg-white">
+            <Header />
+            <Navbar />
+            <div className="max-w-6xl min-h-screen flex bg-slate-950 text-slate-200 mx-auto my-5 rounded ">
+                {/* Sidebar */}
+                <aside className="w-30 lg:w-64 bg-slate-950 border-r border-slate-800 flex flex-col rounded-l">
 
-            {/* Sidebar */}
-            <aside className="w-30 lg:w-64 bg-slate-950 border-r border-slate-800 flex flex-col rounded-l">
+                    {/* Logo */}
+                    <div className="h-16 flex items-center px-4 text-xl font-bold text-blue-400">
+                        Admin
+                    </div>
 
-                {/* Logo */}
-                <div className="h-16 flex items-center px-4 text-xl font-bold text-blue-400">
-                    Admin
-                </div>
+                    {/* Menu */}
+                    <nav className="flex-1 space-y-1">
+                        <MenuLink to="/adminDashboard" label="Dashboard" />
+                        <MenuLink to="/adminDashboard/team" label="Team" />
+                        <MenuLink to="/adminDashboard/projects" label="Projects" />
+                        <MenuLink to="/adminDashboard/calendar" label="Calendar" />
+                        <MenuLink to="/adminDashboard/documents" label="Documents" />
+                        <MenuLink to="/adminDashboard/reports" label="Reports" />
+                        <MenuLink to="/adminDashboard/addNews" label="Add News" />
+                        <MenuLink to="/adminDashboard/pendingNews" label="Pending News" />
 
-                {/* Menu */}
-                <nav className="flex-1 space-y-1">
-                    <MenuLink to="/adminDashboard" label="Dashboard" />
-                    <MenuLink to="/adminDashboard/team" label="Team" />
-                    <MenuLink to="/adminDashboard/projects" label="Projects" />
-                    <MenuLink to="/adminDashboard/calendar" label="Calendar" />
-                    <MenuLink to="/adminDashboard/documents" label="Documents" />
-                    <MenuLink to="/adminDashboard/reports" label="Reports" />
-                    <MenuLink to="/adminDashboard/addNews" label="Add News" />
+                    </nav>
+                    <MenuLink to="/adminDashboard/profile" label={<Profile />} />
+                </aside>
 
-                </nav>
-                <div className="pl-4 mb-1">
-                    <Logout />
-                </div>
-                <MenuLink to="/adminDashboard/profile" label={<Profile />} />
+                {/* Main Content */}
+                <main className="flex-1 p-2">
 
-            </aside>
-
-            {/* Main Content */}
-            <main className="flex-1 p-2">
-                <div className="h-full text-black border border-dashed border-slate-700 rounded-xl bg-slate-900/50">
-                    <Outlet />
-
-                </div>
-            </main>
-
+                    <div className="h-full text-black border border-dashed border-slate-700 rounded-xl bg-slate-900/50">
+                        <Outlet />
+                    </div>
+                </main>
+            </div>
+            <Footer />
         </div>
     );
 }

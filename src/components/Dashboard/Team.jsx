@@ -87,7 +87,7 @@ const Team = () => {
 
     return (
         <div>
-            <section className="bg-gray-200 py-10 px-4 md:px-10 text-white  min-h-screen rounded-xl">
+            <section className="bg-gray-200 py-5 px-4 md:px-10 text-white  min-h-screen rounded-xl">
                 <div className=" mx-auto text-center">
                     <h1 className="text-2xl md:text-4xl font-bold text-green-700  mb-3" >
                         Our Honorable Team

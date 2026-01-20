@@ -7,7 +7,7 @@ function CategoryPage() {
   const [news, setNews] = useState([]);
 
   useEffect(() => {
-    axios.get("/news.json")
+    axios.get("http://localhost:5000/api/news")
       .then(res => {
         const filteredNews = res.data.filter(
           item => item.category === slug

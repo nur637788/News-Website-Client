@@ -8,8 +8,7 @@ function Home() {
     const [visibleCount, setVisibleCount] = useState(10); // প্রথমে 10টি দেখাবে
 
     useEffect(() => {
-        axios
-            .get("/news.json")
+        axios.get("http://localhost:5000/api/news")
             .then((res) => {
                 setNews(res.data);
             })
@@ -42,7 +41,7 @@ function Home() {
 
                             </div>
                             <p className="text-gray-500 text-[8px] md:text-sm absolute top-1 right-3">
-                                {item.author} | {item.publishedDate} | {item.views} views
+                                {item.author} | {item.createdAt} | {item.views} views
                             </p>
                         </div>
                     </Link>

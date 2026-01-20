@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useState } from "react";
 
 function UplodeNews() {
@@ -28,37 +29,48 @@ function UplodeNews() {
             setNews({
                 ...news,
                 title: value,
-                slug: generateSlug(value),
+                slug: generateSlug(value + "-" + Date.now()),
             });
         } else {
             setNews({ ...news, [name]: value });
         }
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // 🧠 এখানে পরে API / Backend যুক্ত করবে
-        console.log("Uploaded News:", {
-            id: Date.now(),
-            ...news,
-        });
+        try {
+            await axios.post(
+                "http://localhost:5000/api/news",
+                {
+                    title: news.title,
+                    slug: news.slug,
+                    category: news.category,
+                    image: news.image,
+                    shortDescription: news.shortDescription,
+                    content: news.content,
+                    author: news.author,
+                }
+            );
 
-        alert("নিউজ সফলভাবে যুক্ত হয়েছে ✅");
+            alert("নিউজ সফলভাবে প্রকাশ হয়েছে ✅");
 
-        // reset form
-        setNews({
-            title: "",
-            slug: "",
-            category: "",
-            author: "",
-            publishedDate: "",
-            image: "",
-            shortDescription: "",
-            content: "",
-            views: 0,
-        });
+            setNews({
+                title: "",
+                slug: "",
+                category: "",
+                author: "",
+                image: "",
+                shortDescription: "",
+                content: "",
+            });
+
+        } catch (error) {
+            console.error(error);
+            alert("নিউজ প্রকাশ করতে সমস্যা হয়েছে ❌");
+        }
     };
+
 
     return (
         <div className="p-2 mx-auto text-slate-200 bg-white rounded-md">
@@ -96,16 +108,21 @@ function UplodeNews() {
                     name="category"
                     value={news.category}
                     onChange={handleChange}
-                    className="w-full p-2 rounded bg-slate-900 border border-slate-700">
-                    <option value="" className="bg-gray-600">ক্যাটাগরি নির্বাচন</option>
+                    className="w-full p-2 rounded bg-slate-900 border border-slate-700"
+                    required>
+                    <option className="bg-gray-400" value="">ক্যাটাগরি নির্বাচন</option>
+                    <option value="latest">সর্বশেষ</option>
                     <option value="top-news">শীর্ষ খবর</option>
+                    <option value="bangladesh">বাংলাদেশ</option>
                     <option value="world">বিশ্ব</option>
-                    <option value="বাংলাদেশ">বাংলাদেশ</option>
-                    <option value="entertainment">বিনোদন</option>
                     <option value="politics">রাজনীতি</option>
                     <option value="sports">খেলা</option>
                     <option value="business">বাণিজ্য</option>
+                    <option value="opinion">মতামত</option>
                     <option value="entertainment">বিনোদন</option>
+                    <option value="lifestyle">জীবনযাপন</option>
+                    <option value="jobs">চাকরি</option>
+                    <option value="video">ভিডিও</option>
                 </select>
 
                 {/* Author */}
@@ -114,16 +131,6 @@ function UplodeNews() {
                     name="author"
                     placeholder="লেখকের নাম"
                     value={news.author}
-                    onChange={handleChange}
-                    className="w-full p-2 rounded bg-slate-900 border border-slate-700"
-                    required
-                />
-
-                {/* Published Date */}
-                <input
-                    type="date"
-                    name="publishedDate"
-                    value={news.publishedDate}
                     onChange={handleChange}
                     className="w-full p-2 rounded bg-slate-900 border border-slate-700"
                     required

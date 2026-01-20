@@ -28,7 +28,7 @@ function AdminLogin() {
             password === adminUser.password
         ) {
             localStorage.setItem("admin", true);
-            navigate("/adminDashboard");
+            navigate("/adminDashboard/changeAdmin");
         } else {
             alert("Invalid Admin Credentials");
         }
@@ -39,7 +39,7 @@ function AdminLogin() {
             <form
                 onSubmit={handleLogin}
                 className="bg-white p-8 rounded-md shadow w-96 border border-gray-300">
-                <img src="./images/news.png" alt="News-Logo" className="w-20 m-auto" />
+                <img src="/images/news.png" alt="News-Logo" className="w-20 m-auto" />
                 <h2 className="text-2xl font-bold mb-6 text-center -mt-2 text-gray-700">
                     Admin Login
                 </h2>
