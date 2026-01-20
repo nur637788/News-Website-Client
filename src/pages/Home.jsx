@@ -8,7 +8,7 @@ function Home() {
     const [visibleCount, setVisibleCount] = useState(10); // প্রথমে 10টি দেখাবে
 
     useEffect(() => {
-        axios.get("http://localhost:5000/api/news")
+        axios.get("https://news-website-server-three.vercel.app/api/news")
             .then((res) => {
                 setNews(res.data);
             })

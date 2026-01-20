@@ -21,7 +21,7 @@ function Footer() {
         try {
             setLoading(true);
             await axios.post(
-                "http://localhost:5000/api/newsletter/subscribe",
+                "https://news-website-server-three.vercel.app/api/news/api/newsletter/subscribe",
                 { email }
             );
             setSuccess(true);

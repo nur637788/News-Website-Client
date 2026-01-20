@@ -7,7 +7,7 @@ function PendingNews() {
 
     // Load pending news
     const loadData = async () => {
-        const res = await axios.get("http://localhost:5000/api/news/pending");
+        const res = await axios.get("https://news-website-server-three.vercel.app/api/news/api/news/pending");
         setNews(res.data);
     };
 

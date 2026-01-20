@@ -29,7 +29,7 @@ function AdminDashboard( ) {
 
     useEffect(() => {
         axios
-            .get("http://localhost:5000/api/dashboard/stats")
+            .get("https://news-website-server-three.vercel.app/api/news/api/dashboard/stats")
             .then((res) => setStats(res.data));
     }, []);
 
