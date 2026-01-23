@@ -20,7 +20,7 @@ function Register() {
             setLoading(true);
 
             const res = await axios.post(
-                "https://news-website-server-three.vercel.app/api/news/api/auth/register",
+                "http://localhost:5000/api/auth/register",
                 { name, email, password }
             );
 

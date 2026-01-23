@@ -7,7 +7,7 @@ function CategoryPage() {
   const [news, setNews] = useState([]);
 
   useEffect(() => {
-    axios.get("https://news-website-server-three.vercel.app/api/news/api/news")
+    axios.get("http://localhost:5000/api/news")
       .then(res => {
         const filteredNews = res.data.filter(
           item => item.category === slug

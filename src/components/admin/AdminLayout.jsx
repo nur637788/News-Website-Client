@@ -25,7 +25,7 @@ function AdminLayout() {
                     <nav className="flex-1 space-y-1">
                         <MenuLink to="/adminDashboard" label="Dashboard" />
                         <MenuLink to="/adminDashboard/team" label="Team" />
-                        <MenuLink to="/adminDashboard/projects" label="Projects" />
+                        <MenuLink to="/adminDashboard/allNews" label="All News" />
                         <MenuLink to="/adminDashboard/calendar" label="Calendar" />
                         <MenuLink to="/adminDashboard/documents" label="Documents" />
                         <MenuLink to="/adminDashboard/reports" label="Reports" />

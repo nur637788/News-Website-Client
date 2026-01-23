@@ -8,7 +8,7 @@ function NewsDetails() {
     const [newsItem, setNewsItem] = useState(null);
     const navigate = useNavigate();
     useEffect(() => {
-        axios.get("https://news-website-server-three.vercel.app/api/news/api/news")
+        axios.get("http://localhost:5000/api/news")
             .then(res => {
                 const found = res.data.find(item => item.slug === slug);
                 setNewsItem(found || null);

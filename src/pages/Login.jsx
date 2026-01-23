@@ -19,7 +19,7 @@ function Login() {
             setLoading(true);
 
             const res = await axios.post(
-                "https://news-website-server-three.vercel.app/api/news/api/auth/login",
+                "http://localhost:5000/api/auth/login",
                 { email, password }
             );
 

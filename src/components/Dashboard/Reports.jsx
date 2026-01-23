@@ -7,7 +7,7 @@ function Reports() {
 
     useEffect(() => {
         axios
-            .get("https://news-website-server-three.vercel.app/api/news/api/dashboard/stats")
+            .get("http://localhost:5000/api/dashboard/stats")
             .then((res) => {
                 setStats(res.data);
                 setLoading(false);

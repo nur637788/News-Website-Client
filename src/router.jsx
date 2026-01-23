@@ -29,6 +29,7 @@ import Design from "./components/Footer/Design";
 import Marketing from "./components/Footer/Marketing";
 import Advertisement from "./components/Footer/Advertisement";
 import PendingNews from "./components/Dashboard/PendingNews";
+import AllNews from "./components/Dashboard/AllNews";
 // footer page
 
 
@@ -69,14 +70,13 @@ const router = createBrowserRouter([
         children: [
             { index: true, element: <AdminDashboard /> }, // /admin
             { path: "team", element: <Team /> },
-            // { path: "projects", element: <Projects /> },
+            { path: "allNews", element: <AllNews /> },
             { path: "calendar", element: <Calender /> },
             { path: "documents", element: <Documents /> },
             { path: "reports", element: <Reports /> },
             { path: "pendingNews", element: <PendingNews /> },
             { path: "AddNews", element: <UplodeNews /> },
             { path: "changeAdmin", element: <ChangeAdmin /> },
-
             { path: "profile", element: <AdminLogin /> },
 
         ],
