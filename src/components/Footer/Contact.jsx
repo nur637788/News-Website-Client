@@ -16,7 +16,7 @@ function Contact() {
 
         try {
             await axios.post(
-                "https://news-website-server-three.vercel.app/api/news/api/contact/send",
+                "https://news-website-server-three.vercel.app/api/contact/send",
                 { name, email, message }
             );
 

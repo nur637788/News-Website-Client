@@ -41,7 +41,7 @@ function UplodeNews() {
 
         try {
             await axios.post(
-                "http://localhost:5000/api/news",
+                "https://news-website-server-three.vercel.app/api/news",
                 {
                     title: news.title,
                     slug: news.slug,
